@@ -1,9 +1,10 @@
-### transform video into string
+### returns the command to transform videos into csv
 
 
 ## preparation to do https://blog.rsquaredacademy.com/command-line-basics-for-r-users/
 
 ### this is made out of two parts:
+
 # 1. Creation of string
 
 #TODO add more options
@@ -32,6 +33,4 @@
  }
  
  
- ##TODO would be better to integrate with the command prompt and do extraction directly.
-
-get_commands("alpha", "bravo", "charlie", "delta")
+##TODO would be better to integrate with the command prompt and do extraction directly.
