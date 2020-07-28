@@ -5,7 +5,7 @@ This project aims to build and evaluate functions for helping social scientists 
 
 [OpenFace](https://github.com/TadasBaltrusaitis/OpenFace) is a state-of-the art tool intended for facial landmark detection, head pose estimation,  
 facial action unit recognition, and eye-gaze estimation.  
-
+ 
 This project has been created by Davide Cannata as part of his PhD at *National University of Ireland Galway*.  
 The research is funded by the *Irish Research Council*.
 
