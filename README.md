@@ -1,7 +1,7 @@
 # easyopenface
 *Methods for using OpenFace in R*
 
-This project aims to build and evaluate functions for helping social scientists in using OpenFace.  
+This project aims to build and evaluate functions for helping social scientists in using OpenFace. The functions make extensive use of the *tidyverse* package.
 
 [OpenFace](https://github.com/TadasBaltrusaitis/OpenFace) is a state-of-the art tool intended for facial landmark detection, head pose estimation,  
 facial action unit recognition, and eye-gaze estimation.  
