@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+# folders
+data/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
