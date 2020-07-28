@@ -19,10 +19,6 @@ findvalleys <- function(x, ...){
   return(ret)
   
 }
-pracma::findpeaks(moving_av(my.df.list[[1]]$pose_Tx,10), threshold = 5)
-
-findvalleys(moving_av(my.df.list[[1]]$pose_Tx,10), threshold = 5)
-
 
 #pracma::findpeaks(-moving_av(my.df.list[[1]]$pose_Tx,10), threshold = 5)
 
@@ -85,4 +81,4 @@ peaks_stats <- function(df, var = NULL, smooth = 10, thresh = 5){
 
 # example
 
-nvb_peaks(my.df.list[[20]], "pose_Tx")
+#nvb_peaks(my.df.list[[20]], "pose_Tx")

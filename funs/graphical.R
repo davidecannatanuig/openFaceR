@@ -49,15 +49,15 @@ feats_in_time <- function (df, vars, tmin = NULL, tmax = NULL, standardise = F){
 
 
 ### example
-feats_in_time(my.df.list[[19]], "h", tmin = 17, tmax = 23, standardise = T)
-feats_in_time(my.df.list[[14]], "AU02_r")
-feats_in_time(my.df.list[[14]], "AU02_c")
+#feats_in_time(my.df.list[[19]], "h", tmin = 17, tmax = 23, standardise = T)
+#feats_in_time(my.df.list[[14]], "AU02_r")
+#feats_in_time(my.df.list[[14]], "AU02_c")
 
 #############################
 
 #next is graph with events + lines
 
-my.df.list[[14]] %>%
-  ggplot(aes(x = timestamp, y = AU02_c*max(my.df.list[[14]]$AU02_r, na.rm = T))) +
-  geom_col(col = "dark grey") +
-  geom_line(aes(y = AU02_r), color = "dark green", size = 2)
+#my.df.list[[14]] %>%
+#  ggplot(aes(x = timestamp, y = AU02_c*max(my.df.list[[14]]$AU02_r, na.rm = T))) +
+#  geom_col(col = "dark grey") +
+#  geom_line(aes(y = AU02_r), color = "dark green", size = 2)

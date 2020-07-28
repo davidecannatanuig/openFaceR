@@ -17,4 +17,4 @@ calc_proximity <- function(df, plot = F){
 
 #example
 
-calc_proximity(my.df.list[[5]], plot = F)
+#calc_proximity(my.df.list[[5]], plot = F)

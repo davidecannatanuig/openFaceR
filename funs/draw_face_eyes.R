@@ -58,7 +58,7 @@ draw_coordinates <- function(df, f = NULL, t = NULL, region = "face"){
 }
 
 #example 
-draw_coordinates(example, t = 2, region = "face")[2]
+#draw_coordinates(example, t = 2, region = "face")[2]
 
 
 # TODO: interactive version selective frame
