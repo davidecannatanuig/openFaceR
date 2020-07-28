@@ -2,15 +2,13 @@
 
 library(tidyverse)
 
-#
+my.functions <- list.files(path = "funs/")
+plyr::a_ply(.data = my.functions, .margins = 1, .fun = function(x) source(paste("funs/", x, sep = ""))) 
 
-#import data
-my.files <- list.files(path = "data/extracted_video_features/")
-my.files <- paste("data/extracted_video_features/", my.files, sep = "")
+### transform the videos in csv inputting the result string in the command line. 
+### The operation might take a considerable amount of time
 
-my.df.list <- lapply(my.files, read_csv)
+get_commands("C/programs/openface/openface.exe", "myvideos/videoex", "myoutput")
 
-names(my.df.list[[1]])
-
-example <- my.df.list[[1]] %>%
-  select(frame:gaze_angle_y, pose_Tx, pose_Rz, AU01_r:AU45_c)
+# open csv files
+my.df.list <- read_of_csv("data/extracted_video_features/")

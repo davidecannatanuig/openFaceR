@@ -32,5 +32,5 @@
    
  }
  
- 
+ ### ex: get_commands("C/programs/openface/openface.exe", "myvideos/videoex", "myoutput")
 ##TODO would be better to integrate with the command prompt and do extraction directly.
