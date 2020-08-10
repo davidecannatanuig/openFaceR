@@ -1,17 +1,33 @@
 ### all statististics
 
-statistics <- function(x){
+statistics <- function(x, mean = T, median = T, sd = T, min = F, max = F, ent = F){
   
-  mx = mean(x, na.rm = T)
-  medx = median(x, na.rm = T)
-  sdx = sd(x, na.rm = T)
-  minx = min(x, na.rm = T)
-  maxx = max(x, na.rm = T)
-  entx = entropy::entropy(x)
+  descr = list()
+    
+  if (mean == T){
+    descr[["mean"]] = mean(x, na.rm = T)
+  }
   
-  descr = list(mx, medx, sdx, minx, maxx, entx)
-  names(descr) = c("mean", "median", "sd", "min", "max", "entropy")
+  if(median == T){
+    descr[["median"]] = median(x, na.rm = T)
+  }
   
+  if(sd == T){
+    descr[["sd"]] = sd(x, na.rm = T)
+  }
+  
+  if(min == T){
+    descr[["min"]] = min(x, na.rm = T)
+  }
+  
+  if(max == T){
+    descr[["max"]] = max(x, na.rm = T)
+  }
+  
+  if(ent == T){
+    descr[["entropy"]] = entropy::entropy(x)
+  }
+
   return(descr)
   
 }
