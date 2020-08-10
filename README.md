@@ -1,4 +1,4 @@
-# easyopenface
+# openFaceR
 *Methods for using OpenFace in R*
 
 This project aims to build and evaluate functions for helping social scientists in using OpenFace. The functions make extensive use of the *tidyverse* package.
