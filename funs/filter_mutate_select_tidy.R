@@ -28,6 +28,19 @@ select_faces <- function(faces, ...){
 }
 
 
+#' transform
+trasform_faces <- function(faces, var, fun){
+  
+  #unlike mutate it takes function taking as argument the full dataset rather than dataset variables
+  
+  for (i in 1:length(faces)){
+    
+    faces[[i]]$var = fun(faces[[i]])
+  }
+  
+  return(faces)
+}
+
 #TODO exceptions handling
 #TODO pipe that allows to chose variables from list
 

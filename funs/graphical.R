@@ -5,7 +5,7 @@
 # allows to chose how many features you want
 # allows to standardise
 
-feats_in_time <- function (df, vars, tmin = NULL, tmax = NULL, standardise = F){
+feats_in_time <- function (df, vars, tmin = NULL, tmax = NULL, standardise = F, ...){
   
   ### ADD MORE PRESET OPTIONS ###
   
@@ -38,7 +38,7 @@ feats_in_time <- function (df, vars, tmin = NULL, tmax = NULL, standardise = F){
    df %>%
     filter(timestamp >= tmin & timestamp <= tmax) %>%
     ggplot(aes(x = timestamp, y = value, color = feat)) +
-    geom_line(size = 2) +
+    geom_line(...) +
     ylab(NULL) +
     ylim(min(df$value, na.rm = T) - percent3, max(df$value, na.rm = T + percent3))
 

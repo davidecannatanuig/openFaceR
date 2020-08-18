@@ -31,3 +31,5 @@ statistics <- function(x, mean = T, median = T, sd = T, min = F, max = F, ent = 
   return(descr)
   
 }
+
+#TODO frequencies <- (x, type == "epm", sensitivity = 10)
