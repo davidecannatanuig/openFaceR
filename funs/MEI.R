@@ -36,11 +36,13 @@ mei_single <- function(df){
   
   ##TODO: should also correct for pitch, yaw and roll?
   
-  xmei <- test %>% select(X_0:X_67) %>% coord_mei(x_shift)
-  ymei <- test %>% select(Y_0:Y_67) %>% coord_mei(y_shift)
-  zmei <- test %>% select(Z_0:Z_67) %>% coord_mei(z_shift)
+  xmei <- df %>% select(X_0:X_67) %>% coord_mei(x_shift)
+  ymei <- df %>% select(Y_0:Y_67) %>% coord_mei(y_shift)
+  zmei <- df %>% select(Z_0:Z_67) %>% coord_mei(z_shift)
   
-  mei <- statistics((xmei + ymei + zmei))
+  mei <- xmei + ymei + zmei
+  
+  mei <- c(NA, mei)
   
   return(mei)
   
@@ -48,15 +50,18 @@ mei_single <- function(df){
 
 # CASE B: multiple cases
 
-mei_faces <- function(df){ # applies the mei functio to a faces object or  list
-  sapply(df, mei_single)
+mei_faces <- function(df, ...){ # applies the mei functio to a faces object or  list
+  meis <- t(sapply(df, function(x) statistics(x = mei_single(x, ...)))) %>%
+    as.data.frame()
+  names(meis) <- paste(names(meis), "mei", sep = "_")
+  return(meis)
 }
 
 # WRAPPER: recognise when case A and when case B
 
-mei <- function(df){
+mei <- function(df, ...){
   if ("list" %in% (class)(df)) { #TODO change to "faces" when cretaing the faces class
-    mei_faces(df)
+    mei_faces(df, ...)
   } else {
     mei_single(df)
   }
