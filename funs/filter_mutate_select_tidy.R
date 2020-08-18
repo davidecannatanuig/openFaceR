@@ -32,7 +32,3 @@ select_faces <- function(faces, ...){
 #TODO pipe that allows to chose variables from list
 
 
-a <- my.df.list %>%
-  select_faces (frame, timestamp)
-
-
