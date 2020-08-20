@@ -29,13 +29,13 @@ select_faces <- function(faces, ...){
 
 
 #'Transform
-trasform_faces <- function(faces, var, fun){
+transform_faces <- function(faces, var, fun){
   
   #unlike mutate it takes function taking as argument the full dataset rather than dataset variables
   
   for (i in 1:length(faces)){
     
-    faces[[i]]$var = fun(faces[[i]])
+    faces[[i]][[var]] = fun(faces[[i]])
   }
   
   return(faces)

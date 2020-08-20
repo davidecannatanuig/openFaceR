@@ -23,7 +23,7 @@
 #' @param events_sum: the method for summarising events. This can be "eps" (events per second), "count" or "rate", which is the proportion of time in which events are happening
 #' @param ... more options to control the summary of continuous variables (see continuous_summarise)
 
-tidy_face <- function(x, events = TRUE, continuous = TRUE, unsuccess = FALSE, events_sum = "count", ...){
+tidy_face <- function(x, events = TRUE, continuous = TRUE, events_sum = "count", ...){
 
   
   x <- x %>% # merge all the faces datasets into one
