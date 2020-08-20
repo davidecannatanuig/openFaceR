@@ -23,12 +23,12 @@ mutate_faces <- function(faces, ...){
 
 select_faces <- function(faces, ...){
   
-  lapply(faces, function(x) select(x, ...))
+  lapply(faces, function(x) select(x, timestamp, frame, success, ...)) #timestamp, frame and success are alywas kept
   
 }
 
 
-#' transform
+#'Transform
 trasform_faces <- function(faces, var, fun){
   
   #unlike mutate it takes function taking as argument the full dataset rather than dataset variables
