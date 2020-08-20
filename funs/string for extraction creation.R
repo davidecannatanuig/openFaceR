@@ -1,32 +1,33 @@
-### returns the command to transform videos into csv
+#  Creation of string for the control panel
 
 
-## preparation to do https://blog.rsquaredacademy.com/command-line-basics-for-r-users/
+# TODO command to  preparation to do https://blog.rsquaredacademy.com/command-line-basics-for-r-users/
 
-### this is made out of two parts:
+#' get command
+#' provides two strings to consecutively use n the control pane to get videos features extracted into csv format
+#' @param: of_dir: the folder where openface executable is stored
+#' @param: input_dir: the folder where to save csv files
+#' @param filename: file name to provide if the goal is to only analyse one video
+#' @output: two strings to copy paste into the command line
 
-# 1. Creation of string
-
-#TODO add more options
-
- get_commands <- function(openface, foldername, outputfolder, filename = NULL){
+ get_commands <- function(of_dir, input_dir, output_dir, filename = NULL){
    
    print("Please, open yor command prompt and input, in order, the following strings:")
    print("1:")
    
-   string1 <- paste("cd ", openface, "\n", sep = "") 
+   string1 <- paste("cd ", of_dir, "\n", sep = "") 
    cat(string1)
   
    print("2:")
    
    if(is.null(filename)){
    
-     string2 <- paste("for /F %i in ('dir /b \"", foldername, "\"\') do FeatureExtraction.exe  -inroot \"", foldername, 
-                    "\" -f %i  -3Dfp -pose -aus -gaze -out_dir \"", outputfolder, "\"", sep = "")
+     string2 <- paste("for /F %i in ('dir /b \"", input_dir, "\"\') do FeatureExtraction.exe  -inroot \"", foldername, 
+                    "\" -f %i  -3Dfp -pose -aus -gaze -out_dir \"", output_dir, "\"", sep = "")
      
    } else {
-     string2 <- paste("FeatureExtraction.exe -inroot \"", foldername, "\" -f \"", filename, 
-                      "\" -3Dfp -pose -aus -gaze -out_dir \"", outputfolder, "\"", sep = "")
+     string2 <- paste("FeatureExtraction.exe -inroot \"", input_dir, "\" -f \"", filename, 
+                      "\" -3Dfp -pose -aus -gaze -out_dir \"", output_dir, "\"", sep = "")
    }
    cat(string2)
    
