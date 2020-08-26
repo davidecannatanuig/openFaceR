@@ -22,7 +22,7 @@
    
    if(is.null(filename)){
    
-     string2 <- paste("for /F %i in ('dir /b \"", input_dir, "\"\') do FeatureExtraction.exe  -inroot \"", foldername, 
+     string2 <- paste("for /F %i in ('dir /b \"", input_dir, "\"\') do FeatureExtraction.exe  -inroot \"", input_dir, 
                     "\" -f %i  -3Dfp -pose -aus -gaze -out_dir \"", output_dir, "\"", sep = "")
      
    } else {
