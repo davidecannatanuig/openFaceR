@@ -2,17 +2,27 @@
 % Please edit documentation in R/events.R
 \name{count_events}
 \alias{count_events}
-\title{count events
-Function to count howm many differnet time a facial event occurs}
+\title{Count events.}
 \usage{
 count_events(x, sensitivity = 5)
 }
 \arguments{
-\item{x}{the variable for which to count events (must have two levels: 0 and 1)}
+\item{x}{the variable for which to count events (must have two levels: 0 and 1).}
 
-\item{sensitivity}{how many frames might have the sodtware missed and still considered the event as one}
+\item{sensitivity}{how many frames might have the software missed and still considered the event as one.}
+}
+\value{
+The number of occurred events.
 }
 \description{
-count events
-Function to count howm many differnet time a facial event occurs
+Function to count how many differnet times a facial event occurs.
+}
+\examples{
+#Counting John blinkings
+count_events(john$AU45_c)
+
+# Using a lower sensitivity to make sure each each blink is counted as one
+count_events(john$AU45_c, sensitivity = 0)
+# There will be higher risk of machine error
+
 }

@@ -2,24 +2,41 @@
 % Please edit documentation in R/tidyface.R
 \name{tidy_face}
 \alias{tidy_face}
-\title{tidy_face
+\title{Tidy Face
 A core function of the OpenFaceR routine. It summarise all the columns of a dataframe into a tidy dataset}
 \usage{
 tidy_face(x, events = TRUE, continuous = TRUE, events_sum = "count",
   ...)
 }
 \arguments{
+\item{x}{a faces object}
+
+\item{events}{include events variables summary}
+
+\item{continuous}{include countinous variables summary}
+
+\item{events_sum}{the method for summarising events. This can be "eps" (events per second), "count" or "rate", which is the proportion of time in which events are happening}
+
 \item{...}{more options to control the summary of continuous variables (see continuous_summarise)}
-
-\item{x:}{a faces object}
-
-\item{events:}{include events variables summary}
-
-\item{continuous:}{include countinous variables summary}
-
-\item{events_sum:}{the method for summarising events. This can be "eps" (events per second), "count" or "rate", which is the proportion of time in which events are happening}
+}
+\value{
+A list of "faces" dataframes
 }
 \description{
-tidy_face
+Tidy Face
 A core function of the OpenFaceR routine. It summarise all the columns of a dataframe into a tidy dataset
+}
+\examples{
+
+# Calculate median mei for the four example videos
+test_videos \%>\%
+  transform_videos("mei", mei) \%>\%
+  select_videos(mei) \%>\%
+  tidy_face(mean = F, sd = T, median = F)
+
+# Count each Action Unit
+
+test_faces \%>\%
+  select_faces(starts_with("AU")) \%>\%
+  tidy_face(continuous = FALSE, events_sum = "count")
 }

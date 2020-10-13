@@ -1,12 +1,3 @@
-## tidyface (consolidation)
-
-# I am thinking about to remake the rest of the functions so that they provide not the final result (e.g. frequency),
-# but the intermediate one, and add to the faces object. In this way preprocessing can be done as it follows:
-# a. function is applied to all the elements of the df
-# b. a select_faces is used for selecting which columns to process
-# c. statistics and frequencies are authomatically chosen for summarisation after
-
-
 #Example:
 
 #read_faces(dir) %>%
@@ -15,13 +6,27 @@
 #tidy_face(mean = T, sd = T, median = F)
 
 
-#' tidy_face
+#' Tidy Face
 #' A core function of the OpenFaceR routine. It summarise all the columns of a dataframe into a tidy dataset
-#' @param x: a faces object
-#' @param events: include events variables summary
-#' @param continuous: include countinous variables summary
-#' @param events_sum: the method for summarising events. This can be "eps" (events per second), "count" or "rate", which is the proportion of time in which events are happening
+#' @param x a faces object
+#' @param events include events variables summary
+#' @param continuous include countinous variables summary
+#' @param events_sum the method for summarising events. This can be "eps" (events per second), "count" or "rate", which is the proportion of time in which events are happening
 #' @param ... more options to control the summary of continuous variables (see continuous_summarise)
+#' @return A list of "faces" dataframes
+#' @examples
+#'
+#' # Calculate median mei for the four example videos
+#' test_videos %>%
+#'   transform_videos("mei", mei) %>%
+#'   select_videos(mei) %>%
+#'   tidy_face(mean = F, sd = T, median = F)
+#'
+#' # Count each Action Unit
+#'
+#' test_faces %>%
+#'   select_faces(starts_with("AU")) %>%
+#'   tidy_face(continuous = FALSE, events_sum = "count")
 
 tidy_face <- function(x, events = TRUE, continuous = TRUE, events_sum = "count", ...){
 
@@ -161,8 +166,8 @@ is_continuous <- function(x){ # note, it will read as frequencies also continuou
 
 #' event summarise
 #' summarise all the frequency variables
-#' @param x: the dataframe to summarise
-#' @as: "eps", standard, is event per second. "count" is the number of events. "
+#' @param x the dataframe to summarise
+#' @param as "eps", standard, is event per second. "count" is the number of events. "
 
 event_summarise <- function(x, as = "count", ...){
 

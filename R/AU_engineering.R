@@ -5,8 +5,7 @@
 #' @examples
 #' au_discrete_engineering(john)
 #'
-#' @export
-
+#' @note DRAFT ONLY
 
 au_discrete_engineering  <- function(df) {
 

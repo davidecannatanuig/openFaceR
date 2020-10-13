@@ -1,30 +1,25 @@
 #' Motion Energy Intensity
 #' @details The function calculate the average energy of motion of 67 the facial points.The frame to frame difference in movement of each facial point is calculated after correcting for the average position of the most rigid points (nose bridge and face sides). The change of each point is summed for each frame and the resulting vector is averaged.
-#' @param df: either a dataframe coming from openFace output (for single faces) or an object of class faces (for multiple faces).
-#' @outpout: a vector with one motion energy per face
-#' @author Davide Cannata - NUIG
+#' @param df: Either a dataframe coming from openFace output (for single faces) or an object of class "faces" (for multiple faces).
+#' @return A vector with one motion energy per face.
+#' @examples
+#'
+#' # Calculate Lara frame to frame mei
+#' mei(lara)
+#'
+#' # Calculate average mei for the four example videos
+#' test_videos %>%
+#'   transform_videos("mei", mei) %>%
+#'   select_videos(mei) %>%
+#'   tidy_face()
+#'
+#' @note This is still a draft and the final version will use a different algorithm
+#' @name MEI
 
-# Support function for calculating average movement of all the contour points
-
-average_mov <- function(df) {
-  shift <- apply(df, 1, function(x) mean(x, na.rm = T)) %>%
-    moving_difference()
-
-  return(shift)
-}
-
-
-
-### Support function for caculating motion energy for each coordinate ####
-coord_mei <- function(df, shift) {
-  sapply(df, function(x) moving_difference(x) - shift) %>%
-    #calculate difference between position in each frame
-      abs() %>% # calculate absolute value of the movement
-      apply(MARGIN = 1, FUN = sum) # sum by row
-       #mean of the resulting values
-}
+NULL
 
 # CASE A: a single face
+#' @rdname MEI
 mei_single <- function(df) {
 
   # first shifts of position of the whole face are calcultaed by using the less independently "moveable" facial points
@@ -47,6 +42,7 @@ mei_single <- function(df) {
 }
 
 # CASE B: multiple cases
+#' @rdname MEI
 
 mei_faces <- function(df, ...) {
   # applies the mei functio to a faces object or  list
@@ -57,6 +53,7 @@ mei_faces <- function(df, ...) {
 }
 
 # WRAPPER: recognise when case A and when case B
+#' @rdname MEI
 
 mei <- function(df, ...) {
   if ("list" %in% (class)(df)) {
@@ -66,3 +63,33 @@ mei <- function(df, ...) {
     mei_single(df)
   }
 }
+
+#--------------------------------------------------------------------------
+
+
+#' Average Point Movements
+#' @description Support function for MEI for calculating average movement of all the contour points.
+#' @inheritParams mei
+
+average_mov <- function(df) {
+  shift <- apply(df, 1, function(x) mean(x, na.rm = T)) %>%
+    moving_difference()
+
+  return(shift)
+}
+
+
+
+#' Mei per coordinate
+#' @description  Support function for caculating motion energy for each coordinate
+#' @inheritParams mei
+
+
+coord_mei <- function(df, shift) {
+  sapply(df, function(x) moving_difference(x) - shift) %>%
+    #calculate difference between position in each frame
+      abs() %>% # calculate absolute value of the movement
+      apply(MARGIN = 1, FUN = sum) # sum by row
+       #mean of the resulting values
+}
+

@@ -2,12 +2,30 @@
 % Please edit documentation in R/draw_face_eyes.R
 \name{draw_coordinates}
 \alias{draw_coordinates}
-\title{draw_coordinates
-function with two options to draw a face or eyes at a sepcific frame or time}
+\title{Draw coordinates.}
 \usage{
 draw_coordinates(df, f = NULL, t = NULL, region = "face")
 }
+\arguments{
+\item{df}{A face object or a dataframe with face values}
+
+\item{f}{The chosen video frame for visualising the coordinates. This value will be ignored if you specify the time.}
+
+\item{t}{The time in second at which you want to see the coordinates.}
+
+\item{region}{either the whole face or the eyes.}
+}
+\value{
+a list including a matrix with the x, y and z coordinate of each point and a ggplot object with a graphical representation
+}
 \description{
-draw_coordinates
-function with two options to draw a face or eyes at a sepcific frame or time
+Function with two options to draw a face or eyes at a sepcific frame or time.
+}
+\examples{
+
+# Draw Paula face at frame 100
+draw_coordinates(paula, f = 100)
+
+# Draw Lara eyes at second 12
+ draw_coordinates(lara, t = 12, region = "eyes")
 }

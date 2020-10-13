@@ -2,19 +2,10 @@
 % Please edit documentation in R/MEI.R
 \name{average_mov}
 \alias{average_mov}
-\title{Motion Energy Intensity}
+\title{Average Point Movements}
 \usage{
 average_mov(df)
 }
-\arguments{
-\item{df:}{either a dataframe coming from openFace output (for single faces) or an object of class faces (for multiple faces).}
-}
 \description{
-Motion Energy Intensity
-}
-\details{
-The function calculate the average energy of motion of 67 the facial points.The frame to frame difference in movement of each facial point is calculated after correcting for the average position of the most rigid points (nose bridge and face sides). The change of each point is summed for each frame and the resulting vector is averaged.
-}
-\author{
-Davide Cannata - NUIG
+Support function for MEI for calculating average movement of all the contour points.
 }

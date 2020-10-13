@@ -8,7 +8,9 @@ summarise all the frequency variables}
 event_summarise(x, as = "count", ...)
 }
 \arguments{
-\item{x:}{the dataframe to summarise}
+\item{x}{the dataframe to summarise}
+
+\item{as}{"eps", standard, is event per second. "count" is the number of events. "}
 }
 \description{
 event summarise

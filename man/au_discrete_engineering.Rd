@@ -15,6 +15,9 @@ a dataframe including measures of smiles, blinks, face smiles and overall count 
 \description{
 A summary function calculating the most common discrete elements.
 }
+\note{
+DRAFT ONLY
+}
 \examples{
 au_discrete_engineering(john)
 

@@ -2,12 +2,28 @@
 % Please edit documentation in R/head moves.R
 \name{velocity_3d}
 \alias{velocity_3d}
-\title{head movements
-three dimensional velocity (measure of overall head movement)}
+\title{Head Movements.}
 \usage{
 velocity_3d(df)
 }
+\arguments{
+\item{df}{A dataframe with facial information from OpenFace.}
+}
+\value{
+A frame by frame array with the total difference of spatial position.
+}
 \description{
-head movements
-three dimensional velocity (measure of overall head movement)
+Calculates the overall amount of head movements in the three axis.
+}
+\examples{
+
+# Calculate Lara frame to frame change in head position
+velocity_3d(lara)
+
+# Calculate average velocity of head for the four example videos
+test_videos \%>\%
+  transform_videos("velocity", velocity_3d) \%>\%
+  select_videos(velocity_3d) \%>\%
+  tidy_face()
+
 }

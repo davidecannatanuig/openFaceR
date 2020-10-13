@@ -2,10 +2,37 @@
 % Please edit documentation in R/filter_mutate_select_tidy.R
 \name{select_faces}
 \alias{select_faces}
-\title{Select}
+\title{Selecting variables in faces objects.}
 \usage{
 select_faces(faces, ...)
 }
+\arguments{
+\item{faces}{A "faces" object.}
+
+\item{...}{The names or the numbers of the selected variables, or an expression that point to them.
+The operator "-" exclude the variables.}
+}
+\value{
+A "faces" object with the selected variables, timestamp, frame and success.
+}
 \description{
-Select
+Select a subset of the variables across a faces object.
+It always return timestamp, frame and success.
+The function is an openfacer equivalent of dplyr::select.
+}
+\examples{
+
+# Select the AU related to smiling
+select_faces(test_faces, AU12_c, AU06_c)
+
+# Create a mei variable, select it and summarise
+test_faces \%>\%
+transform_faces("mei", mei) \%>\%
+select_faces(mei) \%>\%
+tidy_face()
+
+# Select all the AU variables
+test_faces \%>\%
+select_faces(starts_with("AU"))
+
 }

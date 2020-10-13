@@ -2,15 +2,23 @@
 % Please edit documentation in R/read_of_csv.R
 \name{read_face_csvs}
 \alias{read_face_csvs}
-\title{read face csvs
-Function to read all the csvs from one analysis into one face object}
+\title{Read OpenFace output.}
 \usage{
 read_face_csvs(output_dir)
 }
 \arguments{
-\item{:}{output_dir the folder where csvs outputs are stored}
+\item{:}{output_dir the folder where csvs outputs are stored.}
+}
+\value{
+A face object.
 }
 \description{
-read face csvs
-Function to read all the csvs from one analysis into one face object
+Function to read all the csvs from one analysis into one face object.
+}
+\examples{
+#create a directory with Lara and Teddy
+write_csv(lara, "newfolderex//lara.csv)
+write_csv(teddy, "newfolderex//teddy.csv)
+# Import Lara and Teddy data
+read_csv("newfolderex")
 }

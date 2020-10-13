@@ -2,19 +2,25 @@
 % Please edit documentation in R/string for extraction creation.R
 \name{get_commands}
 \alias{get_commands}
-\title{get command
-provides two strings to consecutively use n the control pane to get videos features extracted into csv format}
+\title{Get commands for OpenFace}
 \usage{
 get_commands(of_dir, input_dir, output_dir, filename = NULL)
 }
 \arguments{
-\item{:}{of_dir: the folder where openface executable is stored}
+\item{of_dir}{The folder where openface executable is stored.}
 
-\item{:}{input_dir: the folder where to save csv files}
+\item{input_dir}{The folder where to save csv files.}
 
-\item{filename:}{file name to provide if the goal is to only analyse one video}
+\item{filename}{File name to provide if the goal is to only analyse one video.}
+}
+\value{
+Two strings to copy paste into the command line.
 }
 \description{
-get command
-provides two strings to consecutively use n the control pane to get videos features extracted into csv format
+Provides two strings to consecutively use in the control pane to get videos features
+extracted into csv format
+}
+\examples{
+get_commands("C/programs/openface/openface.exe", "myvideos/videoex", "myoutput")
+
 }
