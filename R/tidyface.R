@@ -1,11 +1,3 @@
-#Example:
-
-#read_faces(dir) %>%
-#mutate_face(velocity = velocity(), mei = mei()) %>%
-#select_face(AU_12, gaze_y, velocity, mei) %>%
-#tidy_face(mean = T, sd = T, median = F)
-
-
 #' Tidy Face
 #' A core function of the OpenFaceR routine. It summarise all the columns of a dataframe into a tidy dataset
 #' @param x a faces object
@@ -27,6 +19,8 @@
 #' test_faces %>%
 #'   select_faces(starts_with("AU")) %>%
 #'   tidy_face(continuous = FALSE, events_sum = "count")
+#'
+#' @export
 
 tidy_face <- function(x, events = TRUE, continuous = TRUE, events_sum = "count", ...){
 
