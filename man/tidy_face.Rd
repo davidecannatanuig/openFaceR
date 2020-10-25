@@ -39,4 +39,5 @@ test_videos \%>\%
 test_faces \%>\%
   select_faces(starts_with("AU")) \%>\%
   tidy_face(continuous = FALSE, events_sum = "count")
+
 }

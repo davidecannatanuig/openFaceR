@@ -1,7 +1,7 @@
 Package: openfacer
 Type: Package
 Title: A pacakge for the convenient analysis of OpenFace data
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(person("Davide", "Cannata", email = "d.cannata1@nuigalway.ie", role = c("aut", "cre")),
           person("Denis", "OHora", email = "denis.ohora@nuigalway.ie", role = "aut"),
           person("Sam", "Redfern", email = "sam.redfern@nuigalway.ie", role = "aut"))
