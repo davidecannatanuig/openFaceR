@@ -30,46 +30,75 @@
 
 tidy_face <- function(x, events = TRUE, continuous = TRUE, events_sum = "count", ...){
 
-
   x <- x %>% # merge all the faces datasets into one
     merge_face()
 
-  list_x <- list() # create a list where to store the three parts: time, events and continuous variables
+  if (nrow(x) < 3) { #rare case with almost no cases after filtering
 
-  events_p <- ifelse(events_sum %in% c("eps", "epm"), "count", events_sum) #create the parameter for the event_summarise functon
+    return(NULL)
 
-  list_x[["time"]] <- time_summarise(x) # length of videos
+  } else{
+    list_x <- list() # create a list where to store the three parts: time, events and continuous variables
 
-  if (events == TRUE) { #events summary
+    events_p <- ifelse(events_sum %in% c("eps", "epm"), "count", events_sum) #create the parameter for the event_summarise functon
 
-    list_x[["events"]] <-  event_summarise(x, as = events_p)
+    list_x[["time"]] <- time_summarise(x) # length of videos
+
+    if (events == TRUE) { #events summary
+
+      list_x[["events"]] <-  event_summarise(x, as = events_p)
+
+    }
+
+
+    if(events_sum %in% c("eps", "epm")){
+
+      list_x[["events"]][2:ncol(list_x[["events"]])] <-
+        list_x[["events"]][2:ncol(list_x[["events"]])]/list_x[["time"]]$length
+
+    }
+
+    if(events_sum == "epm"){
+
+      list_x[["events"]][2:ncol(list_x[["events"]])] <-
+        list_x[["events"]][2:ncol(list_x[["events"]])]*60
+
+    }
+
+    if (continuous == TRUE) { #continuous summary
+
+      list_x[["continuous"]] <- continuous_summarise(x, ...)
+
+    }
+
+    x <- reduce(list_x, left_join)
+
+    return(x)
+  }
+
+}
+
+  merge_face <- function(x) {
+    # convert a faces object into a tidy dataframe, summarising continuous and discrete variables
+
+    for (i in 1:length(x)){ # This loop create per each dataframe a new variable with the video ID
+
+      id.name <- names(x)[[i]] #identifies the video ID
+      x[[i]] <- x[[i]] %>% # create the variable
+        dplyr::mutate(ID = id.name) %>%
+        dplyr::mutate(ID = as.factor(ID)) %>%# convert to factor to use the unsplit function later
+        dplyr::select(ID, everything()) # have it as first row
+    }
+
+    x <- do.call(rbind, x) # merge together all the videos
+
+
+
+    return(x)
+
 
   }
 
-
-  if(events_sum %in% c("eps", "epm")){
-
-    list_x[["events"]][2:ncol(list_x[["events"]])] <-
-      list_x[["events"]][2:ncol(list_x[["events"]])]/list_x[["time"]]$length
-
-  }
-
-  if(events_sum == "epm"){
-
-    list_x[["events"]][2:ncol(list_x[["events"]])] <-
-      list_x[["events"]][2:ncol(list_x[["events"]])]*60
-
-  }
-
-  if (continuous == TRUE) { #continuous summary
-
-    list_x[["continuous"]] <- continuous_summarise(x, ...)
-
-  }
-
-  x <- reduce(list_x, left_join)
-
-  return(x)
 }
 
 merge_face <- function(x) {
