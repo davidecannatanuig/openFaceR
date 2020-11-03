@@ -1,11 +1,3 @@
-#Example:
-
-#read_faces(dir) %>%
-#mutate_face(velocity = velocity(), mei = mei()) %>%
-#select_face(AU_12, gaze_y, velocity, mei) %>%
-#tidy_face(mean = T, sd = T, median = F)
-
-
 #' Tidy Face
 #' A core function of the OpenFaceR routine. It summarise all the columns of a dataframe into a tidy dataset
 #' @param x a faces object
@@ -97,9 +89,9 @@ tidy_face <- function(x, events = TRUE, continuous = TRUE, events_sum = "count",
     return(x)
 
 
-  }
-
 }
+
+
 
 merge_face <- function(x) {
   # convert a faces object into a tidy dataframe, summarising continuous and discrete variables
@@ -168,7 +160,7 @@ continuous_summarise <- function(x, ...){
 
   x <- x %>%
     dplyr::group_by(ID) %>%
-    dplyr::select(-c(timestamp, frame, success)) %>%
+    dplyr::select(-c(timestamp, frame)) %>%
     dplyr::select_if(is_continuous) %>%
     dplyr::summarise_all(.funs = eval(parse(text = funlist))) #TODO add a is_frequency condition
 
@@ -201,8 +193,7 @@ is_continuous <- function(x){ # note, it will read as frequencies also continuou
 event_summarise <- function(x, as = "count", ...){
 
   x <- x %>%
-    dplyr::group_by(ID) %>%
-    dplyr::select(-(timestamp:success))
+    dplyr::group_by(ID)
 
 
   if (as == "ratio") {

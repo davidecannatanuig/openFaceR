@@ -27,3 +27,4 @@ Imports:
     pracma (>= 2.2.5)
 Suggests: 
     ggplot2 (>= 3.1.0)
+    LargeList (>= 0.3.1)

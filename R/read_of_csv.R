@@ -16,7 +16,7 @@ read_face_csvs <- function(output_dir){
   my.files <- list.files(path = output_dir)
   my.paths <- paste(output_dir, my.files, sep = "")
   my.names <- stringr::str_remove(my.files, ".csv")
-  my.df.list <- lapply(my.paths, read_csv)
+  my.df.list <- lapply(my.paths, readr::read_csv)
   names(my.df.list) = my.names
   #TODO: make it a face object
   return(my.df.list)
