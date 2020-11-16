@@ -76,7 +76,11 @@ ll_read_of_csvs <- function (output_dir, file = "my_face_list.llo") {
   my.df.list = getList(file, verbose = FALSE, truncate = TRUE)
   my.paths <- paste(output_dir, my.files, sep = "")
   my.names <- stringr::str_remove(my.files, ".csv")
+<<<<<<< HEAD
   largeList::saveList(object = list(
+=======
+  saveList(object = list(
+>>>>>>> f318018bf749b5a9f33a34ac53dfefd2a20737b3
     readr::read_csv(file = my.paths[[1]])),
     file = file, append = FALSE)
 
