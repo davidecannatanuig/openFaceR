@@ -9,6 +9,8 @@ facial action unit recognition, and eye-gaze estimation.
 This project has been created by Davide Cannata as part of his PhD at *National University of Ireland Galway*.  
 The research is funded by the *Irish Research Council*.
 
+To learn more about OpenFaceR please read the OpenFaceR [paper](https://easychair-www.easychair.org/publications/preprint_download/dr3c) 
+
 ## Citing OpenFaceR
 
 Cannata, D., Redfern, S., & O'Hora, D. (2020, October). OpenFaceR: Developing an R Package for the convenient analysis of OpenFace facial information. In PSYCHOBIT.
