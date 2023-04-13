@@ -101,7 +101,7 @@ mutate_faces <- function(faces, ...) {
 
 transform_faces <- function(faces, var, fun){
 
-  for (i in seq_len(faces)) {
+  for (i in seq_along(faces)) {
 
     faces[[i]][[var]] = fun(faces[[i]])
   }
