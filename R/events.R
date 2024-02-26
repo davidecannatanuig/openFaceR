@@ -13,24 +13,22 @@
 #'
 #' @export
 
-count_events <- function(x, sensitivity = 5) {
-  if (!(levels(as.factor(x)) %in% c(0,1))) {
-    stop("You need to use a dychotomic variable with two levels: 0 and 1!")
-  }
-  count <- x[[1]] # start a counter from 1o or 0 (if the events it's present)
-  buffer <- 0 # set a buffer to avoid measurement error
-             # (same event counted as separate for one miss)
-
-  for (i in 2:length(x)) {
-    if (x[i] > x[i - 1]) {
-      count <- count + 1
-      # add an event to the counter if new instance appears
-      buffer <- 0 # reset buffer
-    } else if (x[i] < x[i - 1] & buffer <= sensitivity){
-      x[i] <- 1
-      buffer <- buffer + 1
-    }
-  }
-
-  return(count)
+count_events <- function (x, sensitivity = 5) 
+{
+	if (!prod((levels(as.factor(x))) %in% c(0, 1))) {
+		stop("You need to use a dychotomic variable with two levels: 0 and 1!")
+	}
+	count <- x[[1]]
+	buffer <- 0
+	for (i in 2:length(x)) {
+		if (x[i] > x[i - 1]) {
+			count <- count + 1
+			buffer <- 0
+		}
+		else if (x[i] < x[i - 1] & buffer <= sensitivity) {
+			x[i] <- 1
+			buffer <- buffer + 1
+		}
+	}
+	return(count)
 }
