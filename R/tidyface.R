@@ -172,13 +172,13 @@ event_summarise <- function(x, as = "count", ...){
 
   if (as == "ratio") {
     x <- x %>%
-      dplyr::summarise_if(is_frequency, .funs = ~ ratio(x = .))
+      dplyr::summarise_if(is_frequency, .funs = ratio)
 
   } else if (as == "count"){
 
     x <- x  %>%
-      dplyr::summarise_if(is_frequency, .funs = ~ count_events(x = ., ...))
-
+      dplyr::summarise_if(is_frequency, .funs = count_events)
+		
   }
 
   return(x)
